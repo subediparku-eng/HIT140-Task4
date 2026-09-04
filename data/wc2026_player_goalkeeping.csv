@@ -1,0 +1,63 @@
+﻿rank,player,position,team,age,club,birth_year,matches_played,starts,minutes,ninety_minutes,goals_against,goals_against_90,shots_on_target_against,saves,save_percentage,wins,draws,losses,clean_sheets,clean_sheet_percentage,penalties_faced,penalty_kicks_against,penalty_saves,penalty_missed,penalty_save_percentage
+1,Yazeed Abulaila,GK,Jordan,33,1.jo Al-Hussein SC,1993,3,3,270,3.0,8,2.67,16,8,50.0,0,0,3,0,0.0,2,2,0,0,0.0
+2,Mahmoud Abunada,GK,Qatar,26,1.qa Al Rayyan SC,2000,3,3,270,3.0,10,3.33,22,12,54.5,0,1,2,0,0.0,1,1,0,0,0.0
+3,Alisson,GK,Brazil,33,Liverpool,1992,5,5,450,5.0,4,0.8,18,14,77.8,3,1,1,2,40.0,0,0,0,0,
+4,Benjamin Asare,GK,Ghana,33,1.gh Accra Hearts of Oak,1992,3,2,225,2.5,2,0.8,10,8,80.0,0,1,1,2,100.0,0,0,0,0,
+5,Lawrence Ati-Zigi,GK,Ghana,29,St. Gallen,1996,2,2,135,1.5,1,0.67,9,8,88.9,1,0,1,1,50.0,0,0,0,0,
+6,Ahmed Basil,GK,Iraq,29,1.iq Al-Shorta,1996,2,2,135,1.5,4,2.67,7,3,42.9,0,0,2,0,0.0,0,0,0,0,
+7,Patrick Beach,GK,Australia,22,Melb City,2003,4,4,388,4.3,3,0.7,17,14,82.4,1,2,1,2,50.0,0,0,0,0,
+8,Alireza Beiranvand,GK,IR Iran,33,Tractor,1992,3,3,270,3.0,3,1.0,18,15,83.3,0,3,0,1,33.3,0,0,0,0,
+9,Oussama Benbot,GK,Algeria,31,1.dz USM Alger,1994,1,1,90,1.0,3,3.0,3,0,0.0,0,1,0,0,0.0,0,0,0,0,
+10,Yassine Bounou,GK,Morocco,35,Al-Hilal,1991,6,6,570,6.3,6,0.95,20,14,70.0,3,2,1,2,33.3,1,0,1,0,100.0
+11,Uğurcan Çakır,GK,Türkiye,30,Galatasaray,1996,3,3,270,3.0,5,1.67,13,8,61.5,1,0,2,0,0.0,0,0,0,0,
+12,Mouhib Chamakh,GK,Tunisia,24,1.tn Club Africain,2001,1,1,90,1.0,5,5.0,6,1,16.7,0,0,1,0,0.0,0,0,0,0,
+13,Diogo Costa,GK,Portugal,26,Porto,1999,5,5,450,5.0,3,0.6,22,19,86.4,2,2,1,2,40.0,0,0,0,0,
+14,Thibaut Courtois,GK,Belgium,34,Real Madrid,1992,6,6,550,6.1,6,0.98,20,14,70.0,3,2,1,1,16.7,0,0,0,0,
+15,Maxime Crépeau,GK,Canada,32,Orlando City,1994,5,5,450,5.0,6,1.2,12,6,50.0,2,1,2,2,40.0,0,0,0,0,
+16,Max Crocombe,GK,New Zealand,32,Millwall,1993,3,3,270,3.0,10,3.33,21,11,52.4,0,1,2,0,0.0,0,0,0,0,
+17,Aymen Dahmen,GK,Tunisia,29,1.tn Ahly Sfaxien,1997,2,2,180,2.0,7,3.5,12,5,41.7,0,0,2,0,0.0,0,0,0,0,
+18,Mory Diaw,GK,Senegal,32,Le Havre,1993,3,2,238,2.6,3,1.13,7,4,57.1,1,0,1,1,50.0,1,1,0,0,0.0
+19,Yahia Fofana,GK,Côte d'Ivoire,25,Rizespor,2000,4,4,360,4.0,4,1.0,13,9,69.2,2,0,2,2,50.0,0,0,0,0,
+20,Matt Freese,GK,USA,27,NYCFC,1998,4,4,360,4.0,5,1.25,13,8,61.5,3,0,1,2,50.0,0,0,0,0,
+21,Hernán Galíndez,GK,Ecuador,39,Huracán,1987,4,4,360,4.0,4,1.0,13,9,69.2,1,1,2,1,25.0,0,0,0,0,
+22,Orlando Gill,GK,Paraguay,26,San Lorenzo,2000,5,5,480,5.3,6,1.13,29,23,79.3,1,2,2,2,40.0,1,1,0,0,0.0
+23,Angus Gunn,GK,Scotland,30,Nottingham,1996,3,3,270,3.0,4,1.33,12,8,66.7,1,0,2,1,33.3,0,0,0,0,
+24,Jalal Hassan,GK,Iraq,35,1.iq Al-Zawra'a SC,1991,2,1,135,1.5,8,5.33,16,8,50.0,0,0,1,0,0.0,0,0,0,0,
+25,Dean Henderson,GK,England,29,Crystal Palace,1997,1,1,90,1.0,4,4.0,9,5,55.6,1,0,0,0,0.0,0,0,0,0,
+26,Gregor Kobel,GK,Switzerland,28,Dortmund,1997,6,6,600,6.7,6,0.9,26,20,76.9,3,2,1,2,33.3,0,0,0,0,
+27,Matej Kovar,GK,Czechia,26,PSV,2000,3,3,270,3.0,6,2.0,15,9,60.0,0,1,2,0,0.0,1,1,0,0,0.0
+28,Senne Lammens,GK,Belgium,23,Manchester Utd,2002,1,0,20,0.2,1,4.5,3,2,66.7,0,0,0,0,,0,0,0,0,
+29,Dominik Livaković,GK,Croatia,31,Dinamo Zagreb,1995,4,4,360,4.0,7,1.75,17,10,58.8,2,0,2,1,25.0,2,2,0,0,0.0
+30,Mike Maignan,GK,France,30,Milan,1995,8,8,720,8.0,10,1.25,22,12,54.5,6,0,2,4,50.0,3,2,1,0,33.3
+31,Emiliano Martínez,GK,Argentina,33,Aston Villa,1992,8,8,810,9.0,8,0.89,28,20,71.4,7,0,1,2,25.0,0,0,0,0,
+32,Édouard Mendy,GK,Senegal,34,Al-Ahli,1992,2,2,152,1.7,6,3.55,14,8,57.1,0,0,2,0,0.0,0,0,0,0,
+33,Orlando Mosquera,GK,Panama,31,Al-Fayha,1994,3,3,270,3.0,4,1.33,11,7,63.6,0,0,3,0,0.0,0,0,0,0,
+34,Lionel Mpasi,GK,Congo DR,31,Le Havre,1994,4,4,360,4.0,5,1.25,19,14,73.7,1,1,2,0,0.0,0,0,0,0,
+35,Fernando Muslera,GK,Uruguay,39,Galatasaray,1986,3,3,225,2.5,4,1.6,8,4,50.0,0,2,1,0,0.0,0,0,0,0,
+36,Abduvohid Nematov,GK,Uzbekistan,25,1.uz FC Nasaf,2001,2,2,180,2.0,8,4.0,13,5,38.5,0,0,2,0,0.0,1,1,0,0,0.0
+37,Manuel Neuer,GK,Germany,40,Bayern Munich,1986,4,4,390,4.3,5,1.15,10,5,50.0,2,1,1,0,0.0,0,0,0,0,
+38,Kristoffer Nordfeldt,GK,Sweden,36,AIK Stockholm,1989,2,2,180,2.0,6,3.0,9,3,33.3,1,0,1,0,0.0,0,0,0,0,
+39,Ørjan Nyland,GK,Norway,35,Sevilla,1990,5,5,480,5.3,7,1.31,22,15,68.2,4,0,1,0,0.0,2,1,1,0,50.0
+40,Guillermo Ochoa,GK,Mexico,40,1.cy AEL Limassol,1985,1,0,13,0.1,0,0.0,0,0,,0,0,0,1,,0,0,0,0,
+41,Mohammed Al-Owais,GK,Saudi Arabia,34,Al-Ula,1991,3,3,270,3.0,5,1.67,21,16,76.2,0,2,1,1,33.3,0,0,0,0,
+42,Jordan Pickford,GK,England,32,Everton,1994,7,7,660,7.3,8,1.09,23,15,65.2,5,1,1,2,28.6,1,1,0,0,0.0
+43,Johny Placide,GK,Haiti,38,Bastia,1988,3,3,270,3.0,8,2.67,19,11,57.9,0,0,3,0,0.0,0,0,0,0,
+44,Raúl Rangel,GK,Mexico,26,Guadalajara,2000,5,5,437,4.9,3,0.62,11,8,72.7,4,0,1,4,80.0,1,1,0,0,0.0
+45,Sergio Rochet,GK,Uruguay,33,Internacional,1993,1,0,45,0.5,0,0.0,0,0,,0,0,0,0,,0,0,0,0,
+46,Eloy Room,GK,Curaçao,37,Miami FC,1989,3,3,270,3.0,9,3.0,29,20,69.0,0,1,2,1,33.3,1,1,0,0,0.0
+47,Mathew Ryan,GK,Australia,34,Levante,1992,1,0,2,0.0,0,0.0,0,0,,0,0,0,0,,0,0,0,0,
+48,Alexander Schlager,GK,Austria,30,RB Salzburg,1996,4,4,360,4.0,9,2.25,22,13,59.1,1,1,2,0,0.0,1,0,0,1,
+49,Egil Selvik,GK,Norway,28,Watford,1997,1,1,90,1.0,4,4.0,9,5,55.6,0,0,1,0,0.0,0,0,0,0,
+50,Kim Seung-gyu,GK,Korea Republic,35,FC Tokyo,1990,3,3,270,3.0,3,1.0,12,9,75.0,1,0,2,0,0.0,0,0,0,0,
+51,Mostafa Shobeir,GK,Egypt,26,1.eg Al Ahly,2000,5,5,480,5.3,7,1.31,19,12,63.2,1,3,1,0,0.0,2,0,2,0,100.0
+52,Unai Simón,GK,Spain,29,Athletic Club,1997,8,8,750,8.3,1,0.12,11,9,90.9,7,1,0,7,87.5,0,0,0,0,
+53,Zion Suzuki,GK,Japan,23,Parma,2002,4,4,360,4.0,5,1.25,17,12,70.6,1,2,1,1,25.0,0,0,0,0,
+54,Matt Turner,GK,USA,31,NE Revolution,1994,1,1,90,1.0,3,3.0,3,0,0.0,0,0,1,0,0.0,0,0,0,0,
+55,Camilo Vargas,GK,Colombia,37,Atlas,1989,5,5,480,5.3,1,0.19,7,6,85.7,3,2,0,4,80.0,0,0,0,0,
+56,Nikola Vasilj,GK,Bosnia–Herz,30,St Pauli,1995,4,4,360,4.0,8,2.0,14,6,42.9,1,1,2,0,0.0,1,1,0,0,0.0
+57,Bart Verbruggen,GK,Netherlands,23,Brighton,2002,4,4,390,4.3,5,1.15,21,16,76.2,2,2,0,0,0.0,0,0,0,0,
+58,Vozinha,GK,Cabo Verde,40,2.pt Chaves,1986,4,4,390,4.3,5,1.15,23,18,78.3,0,3,1,2,50.0,0,0,0,0,
+59,Jacob Widell Zetterström,GK,Sweden,27,Derby County,1998,2,2,180,2.0,4,2.0,15,11,73.3,0,1,1,0,0.0,0,0,0,0,
+60,Ronwen Williams,GK,South Africa,34,Sundowns,1992,4,4,360,4.0,4,1.0,15,11,73.3,1,1,2,1,25.0,0,0,0,0,
+61,Utkir Yusupov,GK,Uzbekistan,35,1.uz Navbahor,1991,1,1,90,1.0,3,3.0,4,1,25.0,0,0,1,0,0.0,0,0,0,0,
+62,Luca Zidane,GK,Algeria,28,Granada,1998,3,3,270,3.0,6,2.0,14,8,57.1,1,0,2,0,0.0,0,0,0,0,
