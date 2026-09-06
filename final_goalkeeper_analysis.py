@@ -6,6 +6,8 @@ import pandas as pd
 import numpy as np
 import scipy.stats as st
 import matplotlib.pyplot as plt
+from statsmodels.stats.power import TTestIndPower
+
 
 # STEP 1: Read the dataset
 df = pd.read_csv("data/wc2026_player_goalkeeping.csv")
@@ -32,6 +34,7 @@ print("Number of teams after grouping:", team.shape[0])
 # The group stage has 3 matches, so more than 3 means the team advanced.
 team["matches_played"] = team["starts"]
 team["advanced"] = team["matches_played"] > 3
+
 print("\nMatches played by each team:")
 print(team["matches_played"].value_counts().sort_index())
 
@@ -65,6 +68,7 @@ print(f"Median = {advanced.median():.3f}")
 print(f"SD     = {advanced.std():.3f}")
 print(f"Min    = {advanced.min():.3f}")
 print(f"Max    = {advanced.max():.3f}")
+
 
 # STEP 7: Boxplot
 plt.figure(figsize=(7, 5))
@@ -122,3 +126,53 @@ else:
 pooled_sd = np.sqrt((eliminated.var() + advanced.var()) / 2)
 cohens_d = diff / pooled_sd
 print(f"Cohen's d   = {cohens_d:.3f}")
+
+
+# STEP 10: Normality check
+# Levene tested equal variance. Shapiro-Wilk tests the other
+# assumption of the t-test, that each group is roughly normal.
+print("\n----- ASSUMPTION CHECKS -----")
+print(f"Shapiro-Wilk eliminated: p = {st.shapiro(eliminated).pvalue:.4f}")
+print(f"Shapiro-Wilk advanced:   p = {st.shapiro(advanced).pvalue:.4f}")
+
+
+# STEP 11: Non-parametric robustness check
+# Mann-Whitney U makes no assumption about the shape of the
+# distribution, so agreement with the t-test strengthens the result.
+print("\n----- ROBUSTNESS: MANN-WHITNEY U -----")
+u_stat, u_p = st.mannwhitneyu(eliminated, advanced, alternative="two-sided")
+print(f"U statistic = {u_stat:.1f}")
+print(f"p-value     = {u_p:.4f}")
+
+
+# STEP 12: Post-hoc power analysis
+# Quantifies how likely this design was to detect an effect of the
+# size observed, rather than simply asserting the sample was small.
+print("\n----- POWER ANALYSIS -----")
+analysis = TTestIndPower()
+ratio = len(advanced) / len(eliminated)
+
+power = analysis.power(effect_size=cohens_d, nobs1=len(eliminated),
+                       ratio=ratio, alpha=0.05)
+needed = analysis.solve_power(effect_size=cohens_d, power=0.8,
+                              ratio=ratio, alpha=0.05)
+
+print(f"Achieved power = {power:.3f}")
+print(f"Teams needed for 80% power = {needed * (1 + ratio):.0f} total")
+
+
+# STEP 13: Sensitivity analysis
+# Repeats the comparison using a sharper contrast (quarter-final or
+# better). Exploratory only: this split was chosen after seeing the
+# main result, so it is reported as a robustness check and not as a
+# second hypothesis test.
+print("\n----- SENSITIVITY: QUARTER-FINAL SPLIT -----")
+team["reached_qf"] = team["matches_played"] >= 6
+early = team[team["reached_qf"] == False]["saves_per_90"]
+late = team[team["reached_qf"] == True]["saves_per_90"]
+
+t2, p2 = st.ttest_ind(early, late, equal_var=False)
+print(f"Groups: n = {len(early)} vs {len(late)}")
+print(f"Means:  {early.mean():.3f} vs {late.mean():.3f}")
+print(f"t = {t2:.3f}, p = {p2:.4f}")
+print("Note: exploratory split, reported as a robustness check only.")
