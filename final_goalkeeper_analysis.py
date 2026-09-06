@@ -32,7 +32,6 @@ print("Number of teams after grouping:", team.shape[0])
 # The group stage has 3 matches, so more than 3 means the team advanced.
 team["matches_played"] = team["starts"]
 team["advanced"] = team["matches_played"] > 3
-
 print("\nMatches played by each team:")
 print(team["matches_played"].value_counts().sort_index())
 
