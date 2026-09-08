@@ -3,23 +3,26 @@ Goalkeeper Saves by Tournament Progress
 Prakash Subedi (407192)
 
 ## Question
-Do goalkeepers of teams eliminated in the group stage face a heavier
-save workload than those whose teams advanced to the knockout rounds?
+Do goalkeepers of eliminated teams face a heavier save workload than
+those whose teams advanced?
 
 ## Data
 FBref Player Goalkeeping table, FIFA World Cup 2026 — 62 goalkeepers, 48 teams.
 
 ## Method
-Player records aggregated to 48 team records to preserve independence.
-The tournament stage is derived from the goalkeeper's start. Welch's two-sample
-t-test on saves per 90 minutes, with assumption checks, a non-parametric
-robustness test and a post-hoc power analysis.
+62 player records aggregated to 48 team records to preserve independence.
+Stage derived from goalkeeper starts. Welch's two-sample t-test on saves per 90.
 
 ## Results
 Eliminated 3.354 vs advanced 2.571.
-Difference 0.783, 95% CI [0.010, 1.555].
-Welch's t = 2.040, p = 0.0535, Cohen's d = 0.662.
+Difference 0.783, 95% CI [-0.013, 1.578].
+t = 2.040, p = 0.0535, Cohen's d = 0.662.
 
-Assumptions: Levene p = 0.244, Shapiro-Wilk p = 0.258 / 0.353.
-Robustness: Mann-Whitney U p = 0.088 — same conclusion.
-Power: achieved 0.56; approximately 82 teams needed for 0.80.
+Levene 0.244 · Shapiro-Wilk 0.258 / 0.353 · Mann-Whitney U 0.088.
+Power 0.56; about 82 teams needed for 0.80.
+
+## Conclusion
+Not significant, but a medium-to-large effect on an underpowered design.
+
+## Run
+python3 final_goalkeeper_analysis.py
