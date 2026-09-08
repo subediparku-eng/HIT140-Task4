@@ -1,3 +1,14 @@
+# HIT140 Assessment 2 — Analytic Task 4
+Goalkeeper Saves by Tournament Progress
+Prakash Subedi (407192)
+
+## Question
+Do goalkeepers of teams eliminated in the group stage face a heavier
+save workload than those whose teams advanced to the knockout rounds?
+
+## Data
+FBref Player Goalkeeping table, FIFA World Cup 2026 — 62 goalkeepers, 48 teams.
+
 ## Method
 Player records aggregated to 48 team records to preserve independence.
 The tournament stage is derived from the goalkeeper's start. Welch's two-sample
