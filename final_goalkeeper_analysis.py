@@ -16,9 +16,9 @@ print("Number of player records:", df.shape[0])
 print("Number of teams:", df["team"].nunique())
 
 
-# STEP 2: Data wrangling - group the players by team
-# Some teams used two goalkeepers, so we add their saves,
-# minutes and starts together to get one record per team.
+# STEP 2: Group the players by team
+# Some teams used two goalkeepers, so their saves, minutes
+# and starts are added together to give one record per team.
 team = df.groupby("team", as_index=False).agg({
     "saves": "sum",
     "minutes": "sum",
@@ -29,9 +29,8 @@ print("Number of teams after grouping:", team.shape[0])
 
 
 # STEP 3: Create the grouping variable
-# Each match has one starting goalkeeper, so the total number of
-# starts equals the number of matches the team played.
-# The group stage has 3 matches, so more than 3 means the team advanced.
+# One goalkeeper starts each match, so starts sum to matches played.
+# The group stage is 3 matches, so more than 3 means the team advanced.
 team["matches_played"] = team["starts"]
 team["advanced"] = team["matches_played"] > 3
 
@@ -69,6 +68,9 @@ print(f"SD     = {advanced.std():.3f}")
 print(f"Min    = {advanced.min():.3f}")
 print(f"Max    = {advanced.max():.3f}")
 
+above = (eliminated > advanced.median()).sum()
+print(f"\nEliminated teams above the advanced median: {above} of {len(eliminated)}")
+
 
 # STEP 7: Boxplot
 plt.figure(figsize=(7, 5))
@@ -81,27 +83,33 @@ print("\nBoxplot saved as goalkeeper_saves_boxplot.png")
 
 
 # STEP 8: Confidence intervals
-# We use the t distribution because the population SD is unknown.
+# The t distribution is used because the population SD is unknown.
 print("\n----- 95% CONFIDENCE INTERVALS -----")
 
 n1 = len(eliminated)
 mean1 = eliminated.mean()
-se1 = st.sem(eliminated)
-ci1 = st.t.interval(0.95, n1 - 1, loc=mean1, scale=se1)
+ci1 = st.t.interval(0.95, n1 - 1, loc=mean1, scale=st.sem(eliminated))
 print(f"Eliminated: mean = {mean1:.3f}, 95% CI = [{ci1[0]:.3f}, {ci1[1]:.3f}]")
 
 n2 = len(advanced)
 mean2 = advanced.mean()
-se2 = st.sem(advanced)
-ci2 = st.t.interval(0.95, n2 - 1, loc=mean2, scale=se2)
+ci2 = st.t.interval(0.95, n2 - 1, loc=mean2, scale=st.sem(advanced))
 print(f"Advanced:   mean = {mean2:.3f}, 95% CI = [{ci2[0]:.3f}, {ci2[1]:.3f}]")
 
-# Confidence interval for the difference between the two means
+# Difference between the two means.
+# Welch-Satterthwaite degrees of freedom, so the interval matches
+# the unpooled standard error and agrees with the t-test below.
 diff = mean1 - mean2
-se_diff = np.sqrt(eliminated.var() / n1 + advanced.var() / n2)
-df_diff = n1 + n2 - 2
+var1 = eliminated.var()
+var2 = advanced.var()
+
+se_diff = np.sqrt(var1 / n1 + var2 / n2)
+df_diff = ((var1 / n1 + var2 / n2) ** 2 /
+           ((var1 / n1) ** 2 / (n1 - 1) + (var2 / n2) ** 2 / (n2 - 1)))
+
 ci_diff = st.t.interval(0.95, df_diff, loc=diff, scale=se_diff)
 print(f"Difference: {diff:.3f}, 95% CI = [{ci_diff[0]:.3f}, {ci_diff[1]:.3f}]")
+print(f"Welch degrees of freedom = {df_diff:.2f}")
 
 
 # STEP 9: Two-sample t-test
@@ -113,6 +121,7 @@ print("\n----- TWO-SAMPLE t-TEST -----")
 levene_stat, levene_p = st.levene(eliminated, advanced)
 print(f"Levene's test p-value = {levene_p:.4f}")
 
+# Welch's version, because the groups are unequal in size.
 t_stat, p_value = st.ttest_ind(eliminated, advanced, equal_var=False)
 print(f"t statistic = {t_stat:.3f}")
 print(f"p-value     = {p_value:.4f}")
@@ -122,23 +131,21 @@ if p_value < 0.05:
 else:
     print("Result: fail to reject the null hypothesis")
 
-# Effect size
-pooled_sd = np.sqrt((eliminated.var() + advanced.var()) / 2)
+pooled_sd = np.sqrt((var1 + var2) / 2)
 cohens_d = diff / pooled_sd
 print(f"Cohen's d   = {cohens_d:.3f}")
 
 
 # STEP 10: Normality check
-# Levene tested equal variance. Shapiro-Wilk tests the other
-# assumption of the t-test, that each group is roughly normal.
+# Levene tested equal variance; Shapiro-Wilk tests normality.
 print("\n----- ASSUMPTION CHECKS -----")
 print(f"Shapiro-Wilk eliminated: p = {st.shapiro(eliminated).pvalue:.4f}")
 print(f"Shapiro-Wilk advanced:   p = {st.shapiro(advanced).pvalue:.4f}")
 
 
 # STEP 11: Non-parametric robustness check
-# Mann-Whitney U makes no assumption about the shape of the
-# distribution, so agreement with the t-test strengthens the result.
+# Mann-Whitney U assumes no distribution, so agreement with
+# the t-test strengthens the result.
 print("\n----- ROBUSTNESS: MANN-WHITNEY U -----")
 u_stat, u_p = st.mannwhitneyu(eliminated, advanced, alternative="two-sided")
 print(f"U statistic = {u_stat:.1f}")
@@ -146,14 +153,12 @@ print(f"p-value     = {u_p:.4f}")
 
 
 # STEP 12: Post-hoc power analysis
-# Quantifies how likely this design was to detect an effect of the
-# size observed, rather than simply asserting the sample was small.
+# How likely this design was to detect an effect of the size found.
 print("\n----- POWER ANALYSIS -----")
 analysis = TTestIndPower()
-ratio = len(advanced) / len(eliminated)
+ratio = n2 / n1
 
-power = analysis.power(effect_size=cohens_d, nobs1=len(eliminated),
-                       ratio=ratio, alpha=0.05)
+power = analysis.power(effect_size=cohens_d, nobs1=n1, ratio=ratio, alpha=0.05)
 needed = analysis.solve_power(effect_size=cohens_d, power=0.8,
                               ratio=ratio, alpha=0.05)
 
@@ -162,10 +167,9 @@ print(f"Teams needed for 80% power = {needed * (1 + ratio):.0f} total")
 
 
 # STEP 13: Sensitivity analysis
-# Repeats the comparison using a sharper contrast (quarter-final or
-# better). Exploratory only: this split was chosen after seeing the
-# main result, so it is reported as a robustness check and not as a
-# second hypothesis test.
+# A sharper contrast: quarter-finalists or better against the rest.
+# Exploratory only, because this split was chosen after seeing the
+# main result, so it is a robustness check and not a second test.
 print("\n----- SENSITIVITY: QUARTER-FINAL SPLIT -----")
 team["reached_qf"] = team["matches_played"] >= 6
 early = team[team["reached_qf"] == False]["saves_per_90"]
